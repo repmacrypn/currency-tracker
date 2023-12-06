@@ -21,6 +21,7 @@ export default (env: BuildEnv): webpack.Configuration => {
       entry: path.resolve(__dirname, 'src', 'index.tsx'),
       output: path.resolve(__dirname, 'dist'),
       static: path.resolve(__dirname, 'src'),
+      configFile: path.join(__dirname, 'tsconfig.json'),
     },
   }
 
