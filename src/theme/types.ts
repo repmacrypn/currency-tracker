@@ -15,7 +15,8 @@ export interface ITheme {
     fontColor: string
     mainBG: string
     navLinkColor: string
-    togglerBorder: string
+    togglerBorderColor: string
+    togglerBackColor: string
     timeUpdater: string
     currencyCardBG: string
     currencyCardBorder: string
@@ -94,6 +95,8 @@ export interface ITheme {
     px450: string
     px480: string
   }
+  defaultTransition: string
+  defaultTransform: string
 }
 
 export interface IColors {

@@ -1,3 +1,4 @@
+import { Header } from '@/components/Header'
 import { Theme } from '@/context/ThemeContext'
 
 import { Container, GlobalStyles } from './styled'
@@ -7,7 +8,8 @@ export const App = () => {
     <Theme>
       <Container>
         <GlobalStyles />
-        <div>чекнуть пэкдж</div>
+        <Header />
+        <main>main</main>
       </Container>
     </Theme>
   )

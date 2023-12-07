@@ -33,7 +33,8 @@ const baseTheme: ITheme = {
     fontColor: colors.white1,
     mainBG: colors.black1,
     navLinkColor: colors.white1,
-    togglerBorder: colors.white1,
+    togglerBorderColor: colors.white1,
+    togglerBackColor: colors.black1,
     timeUpdater: colors.white2,
     currencyCardBG: colors.black2,
     currencyCardBorder: colors.gray3,
@@ -73,7 +74,7 @@ const baseTheme: ITheme = {
     m: '14px',
     l: '16px',
     xl: '18px',
-    xxl: '22px',
+    xxl: '20px',
   },
   fontWeight: {
     light: 300,
@@ -112,6 +113,8 @@ const baseTheme: ITheme = {
     px450: '450px',
     px480: '480px',
   },
+  defaultTransition: 'all 0.3s ease',
+  defaultTransform: 'scale(0.9)',
 }
 
 export const lightTheme: DefaultTheme = {
@@ -127,7 +130,8 @@ export const darkTheme: DefaultTheme = {
     fontColor: colors.black1,
     mainBG: colors.white1,
     navLinkColor: colors.black1,
-    togglerBorder: colors.green1,
+    togglerBorderColor: colors.black1,
+    togglerBackColor: colors.white1,
     timeUpdater: colors.black2,
     currencyCardBG: colors.white2,
     currencyCardBorder: colors.white1,
