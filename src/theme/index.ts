@@ -68,13 +68,16 @@ const baseTheme: ITheme = {
     symbolBG10: colors.green4,
   },
   usedColors: { ...colors },
-  font: ['Poppins', 'sans-serif'],
+  font: ['Poppins', 'Inter', 'sans-serif'],
   fontSize: {
     sm: '12px',
     m: '14px',
     l: '16px',
     xl: '18px',
     xxl: '20px',
+    xxll: '24px',
+    xxxl: '26px',
+    xl4: '28px',
   },
   fontWeight: {
     light: 300,
@@ -151,7 +154,6 @@ export const darkTheme: DefaultTheme = {
     timelinePriceText: colors.black1,
     footerTitle: colors.black1,
     footerText: colors.black1,
-    footerLinks: colors.black1,
     footerCopyright: colors.black1,
   },
 }

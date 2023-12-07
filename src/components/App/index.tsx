@@ -1,3 +1,4 @@
+import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Theme } from '@/context/ThemeContext'
 
@@ -10,6 +11,7 @@ export const App = () => {
         <GlobalStyles />
         <Header />
         <main>main</main>
+        <Footer />
       </Container>
     </Theme>
   )

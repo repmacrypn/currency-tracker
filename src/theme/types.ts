@@ -57,6 +57,9 @@ export interface ITheme {
     l: string
     xl: string
     xxl: string
+    xxll: string
+    xxxl: string
+    xl4: string
   }
   fontWeight: {
     light: number
