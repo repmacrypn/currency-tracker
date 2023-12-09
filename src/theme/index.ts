@@ -12,6 +12,7 @@ export const colors: IColors = {
   green2: 'rgb(42, 70, 40)',
   green3: 'rgb(44, 77, 84)',
   green4: 'rgb(2, 71, 32)',
+  green5: 'rgba(36, 121, 64, 0.3)',
   red1: 'rgb(69, 37, 52)',
   red2: 'rgb(255, 80, 68)',
   gray1: 'rgb(137, 137, 137)',
@@ -24,8 +25,10 @@ export const colors: IColors = {
   blue2: 'rgb(29, 50, 75)',
   textGradient:
     'linear-gradient(92deg, rgb(0, 206, 44) 0%, rgb(174, 223, 35) 49.26%, rgb(163, 220, 0) 100%)',
-  logoGradient:
+  logoGradientLight:
     'linear-gradient(66deg,rgba(0, 0, 0, 1) 0%,rgba(36, 121, 64, 0.3) 52%,rgba(0, 0, 0, 1) 100%)',
+  logoGradientDark:
+    'linear-gradient(66deg,rgb(255,255,255) 0%,rgba(36, 121, 64, 0.3) 52%,rgb(255,255,255) 100%)',
 }
 
 const baseTheme: ITheme = {
@@ -54,8 +57,10 @@ const baseTheme: ITheme = {
     timelinePriceText: colors.white2,
     footerTitle: colors.white1,
     footerText: colors.white2,
-    footerLinks: colors.gray1,
+    footerLinks: colors.green4,
     footerCopyright: colors.gray1,
+    logoGradient: colors.logoGradientLight,
+    pulse: colors.green4,
     symbolBG1: colors.green2,
     symbolBG2: colors.brown1,
     symbolBG3: colors.red1,
@@ -78,6 +83,10 @@ const baseTheme: ITheme = {
     xxll: '24px',
     xxxl: '26px',
     xl4: '28px',
+    xl8: '40px',
+    xl9: '50px',
+    xl10: '72px',
+    xl11: '90px',
   },
   fontWeight: {
     light: 300,
@@ -155,5 +164,7 @@ export const darkTheme: DefaultTheme = {
     footerTitle: colors.black1,
     footerText: colors.black1,
     footerCopyright: colors.black1,
+    logoGradient: colors.logoGradientDark,
+    pulse: colors.green5,
   },
 }

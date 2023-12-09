@@ -38,6 +38,8 @@ export interface ITheme {
     footerText: string
     footerLinks: string
     footerCopyright: string
+    logoGradient: string
+    pulse: string
     symbolBG1: string
     symbolBG2: string
     symbolBG3: string
@@ -60,6 +62,10 @@ export interface ITheme {
     xxll: string
     xxxl: string
     xl4: string
+    xl8: string
+    xl9: string
+    xl10: string
+    xl11: string
   }
   fontWeight: {
     light: number
@@ -112,6 +118,7 @@ export interface IColors {
   green2: string
   green3: string
   green4: string
+  green5: string
   red1: string
   red2: string
   gray1: string
@@ -123,5 +130,6 @@ export interface IColors {
   blue1: string
   blue2: string
   textGradient: string
-  logoGradient: string
+  logoGradientLight: string
+  logoGradientDark: string
 }
