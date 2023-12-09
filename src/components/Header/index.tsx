@@ -9,7 +9,7 @@ import { Container, Logo, NavLinkElem, NavWrapper } from './styled'
 export const Header = () => {
   return (
     <Container>
-      <NavLink to='/'>
+      <NavLink to='/home'>
         <Logo alt='mini logo' src={miniLogo} />
       </NavLink>
       <NavWrapper>
