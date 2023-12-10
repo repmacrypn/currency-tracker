@@ -34,7 +34,7 @@ export const ToggleItem = styled.div<{ $themeValue: ThemeEnum }>`
   border-color: ${(props) => props.theme.colors.togglerBorderColor};
   border-radius: 50%;
   transform: translateX(
-    ${({ $themeValue }) => ($themeValue === 'lightTheme' ? '0px' : '23px')}
+    ${({ $themeValue }) => ($themeValue === 'darkTheme' ? '0px' : '23px')}
   );
   transition: transform 0.3s ease;
 

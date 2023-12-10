@@ -1,8 +1,3 @@
 export const Contacts = () => {
-  return (
-    <div>
-      Contacts пофиксить тему (чтоб была при левом тогглере светлая (просто в самой теме
-      поменять местами все цвета))
-    </div>
-  )
+  return <div>Contacts</div>
 }
