@@ -1,4 +1,5 @@
 import mainLogo from '@/assets/images/mainLogo.svg'
+import { Pages } from '@/routes'
 
 import {
   Container,
@@ -27,7 +28,7 @@ export const Main = () => {
         <Pulse />
         <DateText>Last updated at 11:59</DateText>
       </DateBlock>
-      <div>pages</div>
+      <Pages />
     </Container>
   )
 }
