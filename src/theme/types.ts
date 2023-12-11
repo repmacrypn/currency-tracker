@@ -93,6 +93,7 @@ export interface ITheme {
     px65: string
     px70: string
     px75: string
+    px80: string
     px100: string
     px150: string
     px200: string
