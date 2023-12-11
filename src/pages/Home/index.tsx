@@ -38,6 +38,7 @@ export const Home = () => {
           return (
             <CurrencyCard
               key={index}
+              code={currentCurrency?.code}
               symbol={currentCurrency?.symbol}
               name={currentCurrency?.name}
               price={currencyPrices?.data[currency].value}

@@ -39,6 +39,8 @@ export interface ITheme {
     footerLinks: string
     footerCopyright: string
     logoGradient: string
+    hrColor: string
+    boxShadowColor: string
     pulse: string
     symbolBG1: string
     symbolBG2: string
@@ -79,6 +81,7 @@ export interface ITheme {
     px2: string
     px3: string
     px5: string
+    px8: string
     px10: string
     px15: string
     px20: string
@@ -122,10 +125,12 @@ export interface IColors {
   green5: string
   red1: string
   red2: string
+  red3: string
   gray1: string
   gray2: string
   gray3: string
   gray4: string
+  gray5: string
   brown1: string
   brown2: string
   blue1: string

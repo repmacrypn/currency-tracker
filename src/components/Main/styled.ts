@@ -139,7 +139,7 @@ export const Logo = styled.img`
 export const DateBlock = styled.div`
   display: flex;
   gap: ${(props) => props.theme.valueInPx.px20};
-  padding: 40px 0;
+  padding: 50px 0;
 `
 
 const pulse = keyframes`

@@ -5,15 +5,21 @@ export const Wrapper = styled.section`
 `
 
 export const Title = styled.h4`
-  font-size: ${(props) => props.theme.fontSize.xl};
+  font-size: ${(props) => props.theme.fontSize.xxll};
   font-weight: ${(props) => props.theme.fontWeight.light};
-  margin-bottom: ${(props) => props.theme.valueInPx.px20};
+  margin-bottom: ${(props) => props.theme.valueInPx.px80};
+
+  @media (max-width: 768px) {
+    margin-bottom: ${(props) => props.theme.valueInPx.px40};
+  }
 `
 
 export const Block = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(100px, 1fr));
-  gap: ${(props) => props.theme.valueInPx.px150};
+  row-gap: ${(props) => props.theme.valueInPx.px50};
+  column-gap: ${(props) => props.theme.valueInPx.px150};
+  position: relative;
 
   @media (max-width: 1100px) {
     gap: ${(props) => props.theme.valueInPx.px30};
@@ -21,6 +27,6 @@ export const Block = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: ${(props) => props.theme.valueInPx.px15};
+    gap: ${(props) => props.theme.valueInPx.px25};
   }
 `

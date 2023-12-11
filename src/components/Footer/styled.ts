@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { website } from '@/constants/footerData'
 
 export const Container = styled.footer`
-  padding-top: ${(props) => props.theme.valueInPx.px20};
+  padding-top: ${(props) => props.theme.valueInPx.px50};
 `
 
 export const Wrapper = styled.section`
