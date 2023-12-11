@@ -17,6 +17,13 @@ export const fetchCurrencies = () => async (dispatch: Dispatch) => {
     const dataValues = await currencyAPI.getCurrencyValues()
     const dataPrices = await currencyAPI.getCurrencyPrices()
 
+    localStorage.setItem('currencyValues', JSON.stringify(dataValues))
+    localStorage.setItem('currencyPrices', JSON.stringify(dataPrices))
+    localStorage.setItem(
+      'currencyTimestamp',
+      JSON.stringify(dataPrices.meta.last_updated_at),
+    )
+
     dispatch(getCurrencyValues(dataValues))
     dispatch(getCurrencyPrices(dataPrices))
     dispatch(setCurrencyError(null))
@@ -24,6 +31,8 @@ export const fetchCurrencies = () => async (dispatch: Dispatch) => {
   } catch (e) {
     if (axios.isAxiosError<AxiosError<{ message: string }>>(e)) {
       const err = e.response ? e.response?.data.message : e.message
+
+      localStorage.clear()
 
       dispatch(setCurrencyError(err))
     }

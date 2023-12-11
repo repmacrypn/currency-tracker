@@ -1,28 +1,24 @@
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 
 import { CurrenciesBlock } from '@/components/CurrenciesBlock'
 import { CurrencyCard } from '@/components/CurrenciesBlock/CurrencyCard'
 import { CURRENCIES, currencyStocks } from '@/constants/currencies'
-import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl'
+import { useCacheControl } from '@/hooks/useCacheControl'
+import { useAppSelector } from '@/hooks/useStoreControl'
 import {
   selectCurrencyPrices,
   selectCurrencyValues,
 } from '@/store/selectors/homeSelectors'
-import { fetchCurrencies } from '@/store/thunks/homeThunks'
 
 import { Container } from './styled'
 
 export const Home = () => {
-  const dispatch = useAppDispatch()
-
   const currencyValues = useAppSelector(selectCurrencyValues)
   const currencyPrices = useAppSelector(selectCurrencyPrices)
 
   const currencies = useMemo(() => CURRENCIES.split(','), [])
 
-  useEffect(() => {
-    dispatch(fetchCurrencies())
-  }, [dispatch])
+  useCacheControl()
 
   return (
     <Container>
