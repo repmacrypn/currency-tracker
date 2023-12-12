@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import { ThemeEnum } from '@/theme/types'
-
 export const Container = styled.div`
   flex-shrink: 0;
   position: relative;
@@ -24,7 +22,7 @@ export const Container = styled.div`
   }
 `
 
-export const ToggleItem = styled.div<{ $themeValue: ThemeEnum }>`
+export const ToggleItem = styled.div<{ $isActive: boolean }>`
   position: absolute;
   left: -2px;
   top: -1px;
@@ -33,17 +31,13 @@ export const ToggleItem = styled.div<{ $themeValue: ThemeEnum }>`
   border: 2px solid;
   border-color: ${(props) => props.theme.colors.togglerBorderColor};
   border-radius: 50%;
-  transform: translateX(
-    ${({ $themeValue }) => ($themeValue === 'darkTheme' ? '0px' : '23px')}
-  );
+  transform: translateX(${({ $isActive }) => ($isActive ? '0px' : '23px')});
   transition: transform 0.3s ease;
 
   @media (max-width: 500px) {
     width: 16px;
     height: 16px;
     left: -1px;
-    transform: translateX(
-      ${({ $themeValue }) => ($themeValue === 'lightTheme' ? '0px' : '14px')}
-    );
+    transform: translateX(${({ $isActive }) => (!$isActive ? '0px' : '14px')});
   }
 `

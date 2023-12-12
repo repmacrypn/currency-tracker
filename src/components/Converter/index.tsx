@@ -5,6 +5,7 @@ import { IconDiv } from '@/components/CurrenciesBlock/CurrencyCard/styled'
 import { ErrorText } from '@/components/ErrorBoundary/ErrorFallback/styled'
 import { Loader } from '@/components/Loader'
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl'
+import { setCurrencyTo } from '@/store/actions/homeActions'
 import { RequestStatusType } from '@/store/reducers/app/types'
 import {
   selectConvertFrom,
@@ -29,12 +30,16 @@ export const Converter = ({ currentCurrency }: IConverter) => {
   const status = useAppSelector(selectCurrencyStatus)
   const error = useAppSelector(selectCurrencyError)
 
-  const currencyForSelectOptions = filterCurrency(currentCurrency)
+  const currencyOptions = filterCurrency(currentCurrency)
   const codeCurrencyTo = getCurrencyCode(currencyTo)
   const codeCurrencyFrom = getCurrencyCode(currencyFrom)
 
   const { name, code } = currentCurrency
   const isLoading = status === RequestStatusType.Loading
+
+  const handleSelectChange = (currancy: string) => {
+    dispatch(setCurrencyTo(currancy))
+  }
 
   useEffect(() => {
     if (codeCurrencyFrom && codeCurrencyTo) {
@@ -59,7 +64,13 @@ export const Converter = ({ currentCurrency }: IConverter) => {
           </Item>
         ))}
       <Hint>You can find out the exchange rate of the {name} currancy</Hint>
-      <Select currencyOptions={currencyForSelectOptions} />
+      <Select onClick={handleSelectChange} placeholder='Exchange currancy...'>
+        {currencyOptions.map((cur) => (
+          <option value={cur} key={cur}>
+            {cur}
+          </option>
+        ))}
+      </Select>
       {isLoading && <Loader />}
       {error && <ErrorText>Oops, something went wrong... {error}</ErrorText>}
       {currencyTo && !isLoading && !error && (

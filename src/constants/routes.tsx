@@ -4,9 +4,7 @@ import { Navigate, RouteObject } from 'react-router'
 import { PATH } from '@/constants/path'
 
 const Home = lazy(() => import('@/pages/Home').then(({ Home }) => ({ default: Home })))
-const TimeLine = lazy(() =>
-  import('@/pages/TimeLine').then(({ TimeLine }) => ({ default: TimeLine })),
-)
+const TimeLine = lazy(() => import('@/components/TimeLineContainer'))
 const BankCard = lazy(() =>
   import('@/pages/BankCard').then(({ BankCard }) => ({ default: BankCard })),
 )

@@ -16,5 +16,3 @@ export const Container = styled.select`
     border-color: ${(props) => props.theme.colors.selectBG};
   }
 `
-
-export const Item = styled.option``

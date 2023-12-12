@@ -1,3 +1,7 @@
+import React from 'react'
+
 export interface ISelect {
-  currencyOptions: string[]
+  placeholder: string
+  onClick: (currancy: string) => void
+  children: React.ReactNode
 }
