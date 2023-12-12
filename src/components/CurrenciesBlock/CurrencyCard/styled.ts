@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Card = styled.div`
   &:not(:first-of-type) {
@@ -35,17 +35,7 @@ export const Card = styled.div`
   }
 `
 
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${(props) => props.theme.valueInPx.px30};
-  padding: 30px 32px;
-  background-color: ${(props) => props.theme.colors.currencyCardBG};
-  border-radius: ${(props) => props.theme.valueInPx.px10};
-  border: 1px solid ${(props) => props.theme.colors.currencyCardBorder};
-  transition: ${(props) => props.theme.defaultTransition};
-  will-change: transform;
-
+export const bgColors = css`
   .USD {
     background-color: ${(props) => props.theme.usedColors.green2};
   }
@@ -81,6 +71,20 @@ export const Container = styled.div`
   .TRY {
     background-color: ${(props) => props.theme.usedColors.red3};
   }
+`
+
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${(props) => props.theme.valueInPx.px30};
+  padding: 30px 32px;
+  background-color: ${(props) => props.theme.colors.currencyCardBG};
+  border-radius: ${(props) => props.theme.valueInPx.px10};
+  border: 1px solid ${(props) => props.theme.colors.currencyCardBorder};
+  transition: ${(props) => props.theme.defaultTransition};
+  will-change: transform;
+
+  ${bgColors}
 
   &:hover {
     cursor: pointer;

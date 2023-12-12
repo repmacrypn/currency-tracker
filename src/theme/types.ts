@@ -26,6 +26,7 @@ export interface ITheme {
     banksText: string
     banksTitle: string
     modalBG: string
+    modalBGWrapper: string
     modalTitle: string
     modalText: string
     modalBorder: string
@@ -42,6 +43,8 @@ export interface ITheme {
     hrColor: string
     boxShadowColor: string
     pulse: string
+    selectBorder: string
+    selectBG: string
     symbolBG1: string
     symbolBG2: string
     symbolBG3: string
@@ -116,8 +119,10 @@ export interface IColors {
   black1: string
   black2: string
   black3: string
+  black4: string
   white1: string
   white2: string
+  white3: string
   green1: string
   green2: string
   green3: string

@@ -1,9 +1,11 @@
+import { RequestStatusType } from '@/store/reducers/app/types'
 import { ActionsHomeType, HomeType, IHomeState } from '@/store/reducers/home/types'
 
 const initialState: IHomeState = {
   currencyValues: null,
   currencyPrices: null,
   currencyError: null,
+  currencyStatus: RequestStatusType.Idle,
   convertFrom: null,
   convertTo: null,
   convertValue: null,
@@ -31,6 +33,9 @@ export const homeReducer = (
 
     case HomeType.SET_CONVERT_VALUE:
       return { ...state, convertValue: action.payload }
+
+    case HomeType.SET_CURRENCY_STATUS:
+      return { ...state, currencyStatus: action.payload }
 
     default:
       return state

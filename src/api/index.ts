@@ -28,4 +28,16 @@ export const currencyAPI = {
 
     return res.data
   },
+
+  async getConversion(currencyFrom: string, currencyTo: string) {
+    const res = await instance.get<ICurrencyPrices>('latest', {
+      params: {
+        apikey: 'cur_live_20Btjfbs9InC9eQLl8C7lg91XbUq9KuBGthD8CiX',
+        base_currency: currencyFrom,
+        currencies: currencyTo,
+      },
+    })
+
+    return res.data
+  },
 }

@@ -1,3 +1,4 @@
+import { RequestStatusType } from '@/store/reducers/app/types'
 import { HomeType } from '@/store/reducers/home/types'
 import { ICurrencyPrices, ICurrencyValues } from '@/types/currencies'
 
@@ -16,6 +17,12 @@ export const getCurrencyPrices = (payload: ICurrencyPrices) =>
 export const setCurrencyError = (payload: string | null) =>
   ({
     type: HomeType.SET_CURRENCY_ERROR,
+    payload,
+  }) as const
+
+export const setCurrencyStatus = (payload: RequestStatusType) =>
+  ({
+    type: HomeType.SET_CURRENCY_STATUS,
     payload,
   }) as const
 
