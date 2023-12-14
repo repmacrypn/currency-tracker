@@ -23,7 +23,7 @@ export const Content = styled.div<{ $isActive: boolean }>`
   justify-content: center;
   flex-direction: column;
   width: 50%;
-  height: 60%;
+  height: 65%;
   padding: ${(props) => props.theme.valueInPx.px20};
   border-radius: ${(props) => props.theme.valueInPx.px8};
   color: ${(props) => props.theme.colors.fontColor};

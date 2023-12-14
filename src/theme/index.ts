@@ -184,3 +184,6 @@ export const darkTheme: DefaultTheme = {
     selectBG: colors.white1,
   },
 }
+
+export const mapDark = 'mapbox://styles/mapbox/navigation-night-v1'
+export const mapLight = 'mapbox://styles/mapbox/navigation-day-v1'

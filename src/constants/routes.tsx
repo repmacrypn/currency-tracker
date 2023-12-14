@@ -5,9 +5,7 @@ import { PATH } from '@/constants/path'
 
 const Home = lazy(() => import('@/pages/Home').then(({ Home }) => ({ default: Home })))
 const TimeLine = lazy(() => import('@/components/TimeLineContainer'))
-const BankCard = lazy(() =>
-  import('@/pages/BankCard').then(({ BankCard }) => ({ default: BankCard })),
-)
+const BankCard = lazy(() => import('@/components/BankCardContainer'))
 const Contacts = lazy(() =>
   import('@/pages/Contacts').then(({ Contacts }) => ({ default: Contacts })),
 )

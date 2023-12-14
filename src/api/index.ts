@@ -1,6 +1,8 @@
 import axios from 'axios'
 
 import { CURRENCIES } from '@/constants/currencies'
+import { IBanksData } from '@/types/bank'
+import { IGeoCity } from '@/types/city'
 import { ICurrencyPrices, ICurrencyValues } from '@/types/currencies'
 import { ICurrencyTimeline } from '@/types/timeline'
 
@@ -12,6 +14,13 @@ const timeLineInstance = axios.create({
   baseURL: 'https://rest.coinapi.io/v1/ohlcv/',
   headers: {
     'X-CoinAPI-Key': '17F13CF8-EE0D-4960-8B2C-1591C8A6783E',
+  },
+})
+
+const banksInstance = axios.create({
+  baseURL: 'https://api.foursquare.com/v3/',
+  headers: {
+    Authorization: 'fsq3tHy+yUY1NZvRjszqWFQU0eQE/lEQbfAPoVHs+6zDatM=',
   },
 })
 
@@ -75,6 +84,23 @@ export const currencyAPI = {
         },
       },
     )
+
+    return res.data
+  },
+}
+
+export const mapAPI = {
+  async fetchBanks(geo: IGeoCity) {
+    const { longitude, latitude } = geo
+
+    const res = await banksInstance.get<IBanksData>('places/search', {
+      params: {
+        ll: `${latitude},${longitude}`,
+        radius: 60000,
+        categories: '11045',
+        limit: 50,
+      },
+    })
 
     return res.data
   },
