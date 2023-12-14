@@ -13,7 +13,7 @@ const currenciesInstance = axios.create({
 const timeLineInstance = axios.create({
   baseURL: 'https://rest.coinapi.io/v1/ohlcv/',
   headers: {
-    'X-CoinAPI-Key': '17F13CF8-EE0D-4960-8B2C-1591C8A6783E',
+    'X-CoinAPI-Key': 'E446DD3C-CC25-4920-A9C8-ABAF4FCD57C6',
   },
 })
 

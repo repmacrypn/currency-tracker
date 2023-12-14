@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { ISelect } from './interface'
 import { Container } from './styled'
 
-export const Select = ({ placeholder, children, onClick }: ISelect) => {
-  const [selectValue, setSelectValue] = useState('')
+export const Select = ({ placeholder, value, children, onClick }: ISelect) => {
+  const [selectValue, setSelectValue] = useState(value || '')
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectValue(e.target.value)
@@ -13,9 +13,11 @@ export const Select = ({ placeholder, children, onClick }: ISelect) => {
 
   return (
     <Container value={selectValue} onChange={handleSelectChange}>
-      <option value='' disabled hidden>
-        {placeholder}
-      </option>
+      {placeholder && (
+        <option value='' disabled hidden>
+          {placeholder}
+        </option>
+      )}
       {children}
     </Container>
   )

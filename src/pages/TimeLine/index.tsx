@@ -12,7 +12,8 @@ import {
 } from '@/components/TimeLineContainer/interfaces'
 import { CURRENCIES } from '@/constants/currencies'
 import { periodEnum } from '@/types/timeline'
-import { getCurrencyCode } from '@/utils/helpers/getCurrencyCode'
+import { getCurrentDay } from '@/utils/helpers/getCurrentDay'
+import { getMonthName } from '@/utils/helpers/getMonthName'
 import { handleDateControl } from '@/utils/helpers/handleDateControl'
 
 import { Container, SelectBlock } from './styled'
@@ -22,14 +23,7 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
     (code) => code === 'EUR' || code === 'BTC',
   )
 
-  constructor(props: ICommonTimeLine) {
-    super(props)
-    const { currencyTimeline } = this.props
-
-    this.state = {
-      code: getCurrencyCode(currencyTimeline),
-    }
-  }
+  monthName = getMonthName()
 
   componentDidMount() {
     this.fetchCurrency()
@@ -37,62 +31,63 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
 
   componentDidUpdate(prevProps: ITimeLineContainer) {
     const { day, period, currencyTimeline } = this.props
+    const {
+      day: prevDay,
+      period: prevPeriod,
+      currencyTimeline: prevCurrencyTimeline,
+    } = prevProps
 
-    if (prevProps.day !== day || prevProps.period !== period) {
+    if (
+      prevDay !== day ||
+      prevPeriod !== period ||
+      prevCurrencyTimeline !== currencyTimeline
+    ) {
       this.fetchCurrency()
-    }
-    if (prevProps.currencyTimeline !== currencyTimeline) {
-      this.setState({
-        code: currencyTimeline,
-      })
     }
   }
 
   fetchCurrency = () => {
-    const { day, period, fetchCurrencyByDay, fetchCurrencyByMonth } = this.props
-    const { code } = this.state
+    const { day, period, currencyTimeline, fetchCurrencyByDay, fetchCurrencyByMonth } =
+      this.props
 
-    if (code && day) {
-      fetchCurrencyByDay(code, day)
+    if (currencyTimeline && day) {
+      fetchCurrencyByDay(currencyTimeline, day)
     }
 
-    if (code && period === periodEnum.Month) {
+    if (currencyTimeline && period === periodEnum.Month) {
       const date = handleDateControl(period)
       const month = `${date.year}-${date.month}-${date.day}`
 
-      fetchCurrencyByMonth(code, month)
+      fetchCurrencyByMonth(currencyTimeline, month)
     }
   }
 
   handleSelectChange = (currency: string) => {
-    const { setChartData, setTimelineCurrency } = this.props
+    const { setChartData, setTimelineCurrency, currencyTimeline } = this.props
 
-    setTimelineCurrency(currency)
-    setChartData(null)
+    if (currencyTimeline !== currency) {
+      setTimelineCurrency(currency)
+      setChartData(null)
+    }
   }
 
-  handleSelectDayChange = (option: string) => () => {
+  handleSelectDayChange = (option: string) => {
     const { setChartData, setDay } = this.props
-
-    const currentDate = new Date()
-    const year = currentDate.getFullYear()
-    const month = `0${currentDate.getMonth() + 1}`.slice(-2)
-    const day = `0${option}`.slice(-2)
+    const day = getCurrentDay(option)
 
     setChartData(null)
-    setDay(`${year}-${month}-${day}`)
+    setDay(day)
   }
 
   render() {
-    const { code } = this.state
-    const { chartData, period } = this.props
+    const { chartData, period, currencyTimeline } = this.props
 
     return (
       <Container>
-        <IconDiv>{code}</IconDiv>
+        <IconDiv className={currencyTimeline || undefined}>{currencyTimeline}</IconDiv>
         <SelectBlock>
           <Hint>Select the currency which you want to display on the Chart</Hint>
-          <Select onClick={this.handleSelectChange} placeholder='Currancy...'>
+          <Select onClick={this.handleSelectChange} value={currencyTimeline || undefined}>
             {this.currencyOptions.map((cur) => (
               <option value={cur} key={cur}>
                 {cur}
@@ -105,17 +100,19 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
           {period === periodEnum.Day && (
             <>
               <Hint>Select the date to declare the min diapazon value</Hint>
-              <Select onClick={this.handleSelectDayChange} placeholder='Day...'>
+              <Select onClick={this.handleSelectDayChange} value='1'>
                 {handleDateControl().pastDaysArr.map((cur) => (
                   <option value={cur} key={cur}>
-                    {cur}
+                    {cur} {this.monthName}
                   </option>
                 ))}
               </Select>
             </>
           )}
         </SelectBlock>
-        {chartData && code && <BarChart dataChart={chartData} code={code} />}
+        {chartData && currencyTimeline && (
+          <BarChart dataChart={chartData} code={currencyTimeline} />
+        )}
       </Container>
     )
   }

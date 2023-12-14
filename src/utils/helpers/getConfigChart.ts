@@ -9,7 +9,7 @@ export const getConfigChart = (dataChart: ICurrencyTimeline[], code: string) => 
   const data: IData = {
     datasets: [
       {
-        label: `${code} / USD`,
+        label: `${code}`,
         data:
           dataChart &&
           dataChart?.map((currencyValue) => {
@@ -30,7 +30,7 @@ export const getConfigChart = (dataChart: ICurrencyTimeline[], code: string) => 
             raw: { o, c },
           } = ctx
 
-          return c >= o ? `${colors.green3}` : `${colors.red1}`
+          return c >= o ? `${colors.brown1}` : `${colors.blue1}`
         },
         barPercentage: 1,
         maxBarThickness: 20,

@@ -7,7 +7,7 @@ import { periodEnum } from '@/types/timeline'
 
 const initialState: ITimeLineState = {
   currencyTimeline: 'EUR',
-  period: periodEnum.Day,
+  period: periodEnum.Month,
   day: null,
   chartData: null,
 }
