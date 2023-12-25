@@ -25,10 +25,11 @@ export const NavLinkElem = styled(NavLink)`
   transition: ${(props) => props.theme.defaultTransition};
   text-decoration: none;
   text-align: center;
+  will-change: transform;
 
   &:hover {
     transition: ${(props) => props.theme.defaultTransition};
-    color: ${(props) => props.theme.usedColors.green1};
+    color: ${(props) => props.theme.colors.linkHovered};
   }
 
   &:active {
@@ -36,16 +37,7 @@ export const NavLinkElem = styled(NavLink)`
   }
 
   &.active {
-    transition: border-color 0.3s ease;
-    border-bottom: 2px solid ${(props) => props.theme.usedColors.green1};
+    color: ${(props) => props.theme.usedColors.green1};
     cursor: default;
-  }
-
-  @media (max-width: 600px) {
-    border-bottom: 2px solid ${(props) => props.theme.colors.mainBG};
-
-    &.active {
-      transition: border-color 0.3s ease;
-    }
   }
 `

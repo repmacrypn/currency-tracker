@@ -70,6 +70,7 @@ const baseTheme: ITheme = {
     pulse: colors.green4,
     selectBorder: colors.white1,
     selectBG: colors.black1,
+    linkHovered: colors.gray1,
     symbolBG1: colors.green2,
     symbolBG2: colors.brown1,
     symbolBG3: colors.red1,
@@ -182,6 +183,7 @@ export const darkTheme: DefaultTheme = {
     pulse: colors.green5,
     selectBorder: colors.black1,
     selectBG: colors.white1,
+    linkHovered: colors.white2,
   },
 }
 

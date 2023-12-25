@@ -19,10 +19,10 @@ export const Menu = () => {
       <BurgerMenu isOpen={isOpen} handleMenuClick={() => setIsOpen(!isOpen)} />
       <MenuContent $isOpen={isOpen}>
         <Wrapper>
-          <LogoIcon />
+          <LogoIcon handleLogoClick={() => setIsOpen(false)} />
           <Toggler />
         </Wrapper>
-        <NavBlock />
+        <NavBlock handleNavItemClick={() => setIsOpen(false)} />
       </MenuContent>
     </Container>
   )

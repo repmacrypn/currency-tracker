@@ -45,6 +45,7 @@ export interface ITheme {
     pulse: string
     selectBorder: string
     selectBG: string
+    linkHovered: string
     symbolBG1: string
     symbolBG2: string
     symbolBG3: string

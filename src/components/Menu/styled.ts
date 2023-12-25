@@ -6,6 +6,7 @@ export const Container = styled.div`
   @media (max-width: 600px) {
     display: flex;
     justify-content: flex-end;
+    height: 29px;
   }
 `
 
