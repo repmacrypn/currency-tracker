@@ -37,6 +37,9 @@
         "endOfLine": "auto"
       }
     ],
+    "max-classes-per-file": "off",
+    "class-methods-use-this": "off",
+    "react/no-unused-class-component-methods": "off",
     "no-underscore-dangle": "off",
     "jsx-a11y/label-has-associated-control": [
       2,
