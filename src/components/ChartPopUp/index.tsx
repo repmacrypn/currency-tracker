@@ -1,24 +1,32 @@
-/* eslint-disable react/no-unused-class-component-methods */
 import React from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, Root } from 'react-dom/client'
 
 import { Container, PopUpItem } from '@/components/ChartPopUp/style'
 
 export class PopUp extends React.Component {
   root: HTMLElement | null = document.getElementById('pop-root')
 
-  componentDidMount() {
-    setTimeout(() => {
-      const rootEl = createRoot(this.root as HTMLElement)
+  rootEl: Root | null = null
 
-      rootEl.unmount()
+  timer: ReturnType<typeof setTimeout> | undefined
+
+  componentDidMount() {
+    this.timer = setTimeout(() => {
+      this.rootEl = createRoot(this.root as HTMLElement)
+      this.rootEl?.unmount()
     }, 3000)
   }
 
-  renderComponent() {
-    const rootEl = createRoot(this.root as HTMLElement)
+  componentWillUnmount() {
+    clearTimeout(this.timer)
+  }
 
-    rootEl.render(<PopUp />)
+  renderComponent() {
+    if (!this.rootEl) {
+      this.rootEl = createRoot(this.root as HTMLElement)
+
+      this.rootEl.render(<PopUp />)
+    }
   }
 
   render() {

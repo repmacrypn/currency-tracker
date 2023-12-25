@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 import { IObserver } from '@/components/ChartObserver/interface'
 import { PopUp } from '@/components/ChartPopUp'
 import { ICurrencyTimeline } from '@/types/timeline'
@@ -51,7 +50,6 @@ export abstract class Observer {
 }
 
 export class ChartObserver extends Observer {
-  // eslint-disable-next-line class-methods-use-this
   public update() {
     const activePopUp = new PopUp({})
 

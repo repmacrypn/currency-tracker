@@ -15,11 +15,6 @@ export const Container = styled.div`
   &:hover {
     cursor: pointer;
   }
-
-  @media (max-width: 500px) {
-    width: 30px;
-    height: 18px;
-  }
 `
 
 export const ToggleItem = styled.div<{ $isActive: boolean }>`
@@ -32,12 +27,5 @@ export const ToggleItem = styled.div<{ $isActive: boolean }>`
   border-color: ${(props) => props.theme.colors.togglerBorderColor};
   border-radius: 50%;
   transform: translateX(${({ $isActive }) => ($isActive ? '0px' : '23px')});
-  transition: transform 0.3s ease;
-
-  @media (max-width: 500px) {
-    width: 16px;
-    height: 16px;
-    left: -1px;
-    transform: translateX(${({ $isActive }) => (!$isActive ? '0px' : '14px')});
-  }
+  transition: ${(props) => props.theme.defaultTransition};
 `

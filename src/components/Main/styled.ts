@@ -18,7 +18,7 @@ export const LogoBlock = styled.section`
   }
 
   @media (max-width: 400px) {
-    padding: 35px 0;
+    padding: 35px 10px;
   }
 `
 
@@ -78,11 +78,19 @@ export const LogoTitle = styled.h3<{ $isHuge?: boolean }>`
         : (props) => props.theme.fontSize.xxll};
   }
 
-  @media (max-width: 356px) {
+  @media (max-width: 376px) {
+    padding-right: ${(props) => props.theme.valueInPx.px10};
     font-size: ${({ $isHuge }) =>
       $isHuge
         ? (props) => props.theme.fontSize.xxll
         : (props) => props.theme.fontSize.xxl};
+  }
+
+  @media (max-width: 335px) {
+    font-size: ${({ $isHuge }) =>
+      $isHuge
+        ? (props) => props.theme.fontSize.xxll
+        : (props) => props.theme.fontSize.xl};
   }
 `
 

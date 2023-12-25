@@ -22,10 +22,6 @@ export const Wrapper = styled.section`
   @media (max-width: 744px) {
     flex-wrap: wrap;
   }
-
-  @media (max-width: 402px) {
-    padding: 0;
-  }
 `
 
 export const InfoBlock = styled.div`
@@ -94,7 +90,7 @@ export const AboutBlockWrapper = styled.div`
     width: 100%;
   }
 
-  @media (max-width: 378px) {
+  @media (max-width: 414px) {
     gap: 20px;
   }
 `
@@ -110,6 +106,10 @@ export const AboutBlockTitle = styled.h3`
   font-weight: ${(props) => props.theme.fontWeight.normal};
   margin-bottom: ${(props) => props.theme.valueInPx.px40};
   font-size: ${(props) => props.theme.fontSize.xxl};
+
+  @media (max-width: 414px) {
+    font-size: ${(props) => props.theme.fontSize.xl};
+  }
 `
 
 export const AboutBlockLink = styled.a.attrs({
@@ -131,7 +131,7 @@ export const AboutBlockLink = styled.a.attrs({
 `
 
 export const RightsInfoBlock = styled.h3`
-  padding: 55px 0 40px 0;
+  padding: 55px 10px 40px;
   text-align: center;
   font-family: ${(props) => props.theme.font[1]};
   font-size: ${(props) => props.theme.fontSize.xxl};
