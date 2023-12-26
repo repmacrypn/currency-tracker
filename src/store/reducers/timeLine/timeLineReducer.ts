@@ -1,3 +1,4 @@
+import { RequestStatusType } from '@/store/reducers/app/types'
 import {
   ActionsTimelineType,
   ITimeLineState,
@@ -10,6 +11,8 @@ const initialState: ITimeLineState = {
   period: periodEnum.Month,
   day: null,
   chartData: null,
+  timelineError: null,
+  timelineStatus: RequestStatusType.Idle,
 }
 
 export const timeLineReducer = (
@@ -28,6 +31,12 @@ export const timeLineReducer = (
 
     case TimelineType.SET_CHART_DATA:
       return { ...state, chartData: action.payload }
+
+    case TimelineType.SET_ERROR:
+      return { ...state, timelineError: action.payload }
+
+    case TimelineType.SET_STATUS:
+      return { ...state, timelineStatus: action.payload }
 
     default:
       return state

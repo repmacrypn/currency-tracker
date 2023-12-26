@@ -2,8 +2,8 @@ import React from 'react'
 
 import { BarChart } from '@/components/ChartComponent'
 import { Select } from '@/components/Converter/Select'
-import { Hint } from '@/components/Converter/styled'
 import { IconDiv } from '@/components/CurrenciesBlock/CurrencyCard/styled'
+import { Loader } from '@/components/Loader'
 import { PeriodToggle } from '@/components/PeriodToggler'
 import {
   ICommonTimeLine,
@@ -11,17 +11,16 @@ import {
   ITimeLineState,
 } from '@/components/TimeLineContainer/interfaces'
 import { CURRENCIES } from '@/constants/currencies'
+import { RequestStatusType } from '@/store/reducers/app/types'
 import { periodEnum } from '@/types/timeline'
 import { getCurrentDay } from '@/utils/helpers/getCurrentDay'
 import { getMonthName } from '@/utils/helpers/getMonthName'
 import { handleDateControl } from '@/utils/helpers/handleDateControl'
 
-import { Container, SelectBlock } from './styled'
+import { Container, Hint, SelectBlock } from './styled'
 
 export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineState> {
-  currencyOptions = CURRENCIES.split(',').filter(
-    (code) => code === 'EUR' || code === 'BTC',
-  )
+  currencyOptions = CURRENCIES.split(',')
 
   monthName = getMonthName()
 
@@ -80,13 +79,16 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
   }
 
   render() {
-    const { chartData, period, currencyTimeline } = this.props
+    const { chartData, period, currencyTimeline, status } = this.props
 
     return (
       <Container>
         <IconDiv className={currencyTimeline || undefined}>{currencyTimeline}</IconDiv>
         <SelectBlock>
-          <Hint>Select the currency which you want to display on the Chart</Hint>
+          <Hint>
+            Select the currency which you want to display on the Chart (BTC and EUR are
+            valid)
+          </Hint>
           <Select onClick={this.handleSelectChange} value={currencyTimeline || undefined}>
             {this.currencyOptions.map((cur) => (
               <option value={cur} key={cur}>
@@ -99,7 +101,7 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
           <PeriodToggle period={period} />
           {period === periodEnum.Day && (
             <>
-              <Hint>Select the date to declare the min diapazon value</Hint>
+              <Hint>Select most wanted day to declare a 24 hour Chart range </Hint>
               <Select onClick={this.handleSelectDayChange} value='1'>
                 {handleDateControl().pastDaysArr.map((cur) => (
                   <option value={cur} key={cur}>
@@ -110,6 +112,7 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
             </>
           )}
         </SelectBlock>
+        {status === RequestStatusType.Loading && <Loader />}
         {chartData && currencyTimeline && (
           <BarChart dataChart={chartData} code={currencyTimeline} />
         )}

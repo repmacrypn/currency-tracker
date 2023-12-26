@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { ErrorText } from '@/components/ErrorBoundary/ErrorFallback/styled'
+import { ErrorText } from '@/components/ErrorText'
 import {
   IMapDispatchToProps,
   IMapStateToProps,
@@ -12,19 +12,25 @@ import {
   setChartData,
   setDay,
   setTimelineCurrency,
+  setTimelineError,
 } from '@/store/actions/timeLineActions'
 import { fetchCurrencyByDay, fetchCurrencyByMonth } from '@/store/thunks/timeLineThunks'
 import { RootStoreType } from '@/store/types'
 
 class TimeLineContainer extends React.Component<ITimeLineContainer> {
-  render() {
-    const { error, ...rest } = this.props
+  componentWillUnmount(): void {
+    const { error, setTimelineError, setTimelineCurrency } = this.props
 
-    return error ? (
-      <ErrorText>Oops, something went wrong... {error}</ErrorText>
-    ) : (
-      <TimeLine {...rest} />
-    )
+    if (error) {
+      setTimelineError(null)
+      setTimelineCurrency('EUR')
+    }
+  }
+
+  render() {
+    const { error } = this.props
+
+    return error ? <ErrorText>{error}</ErrorText> : <TimeLine {...this.props} />
   }
 }
 
@@ -34,13 +40,15 @@ const mapStateToProps = (state: RootStoreType): IMapStateToProps => {
     period: state.timeline.period,
     day: state.timeline.day,
     chartData: state.timeline.chartData,
-    error: state.app.appError,
+    error: state.timeline.timelineError,
+    status: state.timeline.timelineStatus,
   }
 }
 
 const mapDispatchToProps: IMapDispatchToProps = {
   setTimelineCurrency,
   setChartData,
+  setTimelineError,
   setDay,
   fetchCurrencyByDay,
   fetchCurrencyByMonth,

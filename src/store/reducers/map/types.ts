@@ -9,7 +9,7 @@ import { IMapGeo } from '@/types/city'
 
 export interface IMapState {
   banks: IBanksData | null
-  error: string | null
+  mapError: string | null
   searchCurrency: string
   geo: IMapGeo | null
 }

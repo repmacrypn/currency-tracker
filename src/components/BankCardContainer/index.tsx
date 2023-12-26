@@ -6,7 +6,7 @@ import {
   IMapDispatchToProps,
   IMapStateToProps,
 } from '@/components/BankCardContainer/interfaces'
-import { ErrorText } from '@/components/ErrorBoundary/ErrorFallback/styled'
+import { ErrorText } from '@/components/ErrorText'
 import { BankCard } from '@/pages/BankCard'
 import { setSearchCurrency } from '@/store/actions/mapActions'
 import { fetchBanks, fetchGeo } from '@/store/thunks/mapThunks'
@@ -16,18 +16,14 @@ class BankCardContainer extends React.Component<IBankCardContainer> {
   render() {
     const { error, ...rest } = this.props
 
-    return error ? (
-      <ErrorText>Oops, something went wrong... {error}</ErrorText>
-    ) : (
-      <BankCard {...rest} />
-    )
+    return error ? <ErrorText>{error}</ErrorText> : <BankCard {...rest} />
   }
 }
 
 const mapStateToProps = (state: RootStoreType): IMapStateToProps => {
   return {
     banks: state.map.banks,
-    error: state.map.error,
+    error: state.map.mapError,
     searchCurrency: state.map.searchCurrency,
     geo: state.map.geo,
   }

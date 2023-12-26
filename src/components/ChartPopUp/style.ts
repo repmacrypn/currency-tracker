@@ -26,5 +26,6 @@ export const PopUpItem = styled.div`
   border-radius: 20px;
   pointer-events: all;
   background-color: ${colors.green1};
+  color: ${colors.white1};
   transition: all 0.3s ease;
 `

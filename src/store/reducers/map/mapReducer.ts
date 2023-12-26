@@ -2,7 +2,7 @@ import { ActionsMapType, IMapState, MapType } from '@/store/reducers/map/types'
 
 const initialState: IMapState = {
   banks: null,
-  error: null,
+  mapError: null,
   searchCurrency: '',
   geo: null,
 }
@@ -13,7 +13,7 @@ export const mapReducer = (state = initialState, action: ActionsMapType): IMapSt
       return { ...state, banks: action.payload }
 
     case MapType.SET_ERROR:
-      return { ...state, error: action.payload }
+      return { ...state, mapError: action.payload }
 
     case MapType.SET_SEARCH_CURRENCY:
       return { ...state, searchCurrency: action.payload }

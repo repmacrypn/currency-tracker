@@ -71,6 +71,7 @@ const baseTheme: ITheme = {
     selectBorder: colors.white1,
     selectBG: colors.black1,
     linkHovered: colors.gray1,
+    diagramBorder: colors.gray3,
     symbolBG1: colors.green2,
     symbolBG2: colors.brown1,
     symbolBG3: colors.red1,
@@ -184,6 +185,7 @@ export const darkTheme: DefaultTheme = {
     selectBorder: colors.black1,
     selectBG: colors.white1,
     linkHovered: colors.white2,
+    diagramBorder: colors.black2,
   },
 }
 

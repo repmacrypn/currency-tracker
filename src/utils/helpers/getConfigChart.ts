@@ -1,11 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Chart, ChartMeta } from 'chart.js'
+import { DefaultTheme } from 'styled-components'
 
 import { IData } from '@/components/ChartComponent/interfaces'
 import { colors } from '@/theme'
 import { ICurrencyTimeline } from '@/types/timeline'
 
-export const getConfigChart = (dataChart: ICurrencyTimeline[], code: string) => {
+export const getConfigChart = (
+  dataChart: ICurrencyTimeline[],
+  code: string,
+  theme: DefaultTheme,
+) => {
   const data: IData = {
     datasets: [
       {
@@ -30,12 +34,12 @@ export const getConfigChart = (dataChart: ICurrencyTimeline[], code: string) => 
             raw: { o, c },
           } = ctx
 
-          return c >= o ? `${colors.brown1}` : `${colors.blue1}`
+          return c >= o ? `${colors.red2}` : `${colors.green1}`
         },
         barPercentage: 1,
         maxBarThickness: 20,
         minBarLength: 7,
-        borderColor: `${colors.black2}`,
+        borderColor: `${theme.colors.diagramBorder}`,
         borderWidth: 2,
         borderSkipped: false,
       },
@@ -43,6 +47,7 @@ export const getConfigChart = (dataChart: ICurrencyTimeline[], code: string) => 
   }
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     parsing: {
       xAxisKey: 'x',
       yAxisKey: 's',
@@ -51,7 +56,7 @@ export const getConfigChart = (dataChart: ICurrencyTimeline[], code: string) => 
       x: {
         stacked: true,
         grid: {
-          offset: true,
+          offset: false,
         },
       },
       y: {
@@ -59,7 +64,7 @@ export const getConfigChart = (dataChart: ICurrencyTimeline[], code: string) => 
         beginAtZero: false,
         grace: '80%',
         grid: {
-          offset: true,
+          offset: false,
         },
       },
     },
@@ -77,7 +82,7 @@ export const getConfigChart = (dataChart: ICurrencyTimeline[], code: string) => 
 
       ctx.save()
       ctx.lineWidth = 2
-      ctx.strokeStyle = `${colors.black2}`
+      ctx.strokeStyle = `${theme.colors.diagramBorder}`
 
       data.datasets[0].data.forEach((datapoint: any, index: number) => {
         ctx.beginPath()

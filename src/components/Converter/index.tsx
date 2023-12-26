@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 import { Select } from '@/components/Converter/Select'
 import { IconDiv } from '@/components/CurrenciesBlock/CurrencyCard/styled'
-import { ErrorText } from '@/components/ErrorBoundary/ErrorFallback/styled'
+import { ErrorText } from '@/components/ErrorText'
 import { Loader } from '@/components/Loader'
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl'
 import { setCurrencyTo } from '@/store/actions/homeActions'
@@ -72,7 +72,7 @@ export const Converter = ({ currentCurrency }: IConverter) => {
         ))}
       </Select>
       {isLoading && <Loader />}
-      {error && <ErrorText>Oops, something went wrong... {error}</ErrorText>}
+      {error && <ErrorText>{error}</ErrorText>}
       {currencyTo && !isLoading && !error && (
         <ConverterValue>
           1 {code} = {convertValue} {codeCurrencyTo}
