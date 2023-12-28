@@ -9,6 +9,7 @@ import {
   Title,
   Tooltip,
 } from 'chart.js'
+import { useTheme } from 'styled-components'
 
 import { IBarChart } from '@/components/ChartComponent/interfaces'
 import { ChartObserver, Subject } from '@/components/ChartObserver'
@@ -24,7 +25,9 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 export const BarChart = memo(({ dataChart, code }: IBarChart) => {
   const period = useAppSelector(selectPeriod)
 
-  const data = getConfigChart(dataChart, code)
+  const theme = useTheme()
+
+  const data = getConfigChart(dataChart, code, theme)
 
   useEffect(() => {
     const subject = new Subject(dataChart)

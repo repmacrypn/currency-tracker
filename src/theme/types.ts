@@ -46,6 +46,7 @@ export interface ITheme {
     selectBorder: string
     selectBG: string
     linkHovered: string
+    diagramBorder: string
     symbolBG1: string
     symbolBG2: string
     symbolBG3: string

@@ -1,4 +1,6 @@
-import { Button, Container, ErrorText } from './styled'
+import { ErrorText } from '@/components/ErrorText'
+
+import { Button, Container } from './styled'
 
 export const ErrorFallback = () => {
   const handlerClick = () => {
@@ -7,7 +9,7 @@ export const ErrorFallback = () => {
 
   return (
     <Container>
-      <ErrorText>Something went wrong, please reload the page...</ErrorText>
+      <ErrorText />
       <Button onClick={handlerClick}>Reload page</Button>
     </Container>
   )

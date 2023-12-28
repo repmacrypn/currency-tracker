@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 
 import { CurrenciesBlock } from '@/components/CurrenciesBlock'
 import { CurrencyCard } from '@/components/CurrenciesBlock/CurrencyCard'
-import { ErrorText } from '@/components/ErrorBoundary/ErrorFallback/styled'
+import { ErrorText } from '@/components/ErrorText'
 import { Loader } from '@/components/Loader'
 import { Modal } from '@/components/Modal'
 import { CURRENCIES, currencyStocks } from '@/constants/currencies'
@@ -33,7 +33,7 @@ export const Home = () => {
   useCacheControl()
 
   if (status === RequestStatusType.Loading) return <Loader />
-  if (error) return <ErrorText>Oops, something went wrong... {error}</ErrorText>
+  if (error) return <ErrorText>{error}</ErrorText>
 
   return (
     <Container>

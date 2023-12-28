@@ -12,12 +12,6 @@ export const Container = styled.article`
   font-family: 'Poppins', sans-serif;
 `
 
-export const ErrorText = styled.p`
-  font-size: 20px;
-  text-align: center;
-  line-height: 1.5;
-`
-
 export const Button = styled.button`
   display: block;
   width: 200px;

@@ -5,11 +5,6 @@ export const Container = styled.header`
   margin: 34px auto;
 
   @media (max-width: 900px) {
-    width: calc(100% - 30px);
-    margin: 34px 15px;
-  }
-
-  @media (max-width: 600px) {
     width: calc(100% - 20px);
     margin: 34px 10px;
   }

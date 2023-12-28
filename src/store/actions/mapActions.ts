@@ -1,3 +1,4 @@
+import { RequestStatusType } from '@/store//reducers/app/types'
 import { MapType } from '@/store/reducers/map/types'
 import { IBanksData } from '@/types/bank'
 import { IMapGeo } from '@/types/city'
@@ -11,6 +12,12 @@ export const setBanks = (payload: IBanksData) =>
 export const setMapError = (payload: string | null) =>
   ({
     type: MapType.SET_ERROR,
+    payload,
+  }) as const
+
+export const setMapStatus = (payload: RequestStatusType) =>
+  ({
+    type: MapType.SET_STATUS,
     payload,
   }) as const
 
