@@ -1,12 +1,13 @@
-/* eslint-disable react/static-property-placement */
 import { ContextType, PureComponent } from 'react'
 import Map, { ViewState, ViewStateChangeEvent } from 'react-map-gl'
 
 import { IBankCard, IBankCardState } from '@/components/BankCardContainer/interfaces'
+import { Loader } from '@/components/Loader'
 import { MarkerControl } from '@/components/MarkerControl'
 import { SearchField } from '@/components/SearchField'
 import { defaultLatitude, defaultLongitude, defaultZoom } from '@/constants/banksData'
 import { ThemeContext } from '@/context/ThemeContext'
+import { RequestStatusType } from '@/store/reducers/app/types'
 import { mapDark, mapLight } from '@/theme'
 import { ThemeEnum } from '@/theme/types'
 import { IBank } from '@/types/bank'
@@ -85,7 +86,7 @@ export class BankCard extends PureComponent<IBankCard, IBankCardState> {
   }
 
   render() {
-    const { banks, searchCurrency } = this.props
+    const { banks, searchCurrency, status } = this.props
     const { overview, selectedBank } = this.state
     const { theme } = this.context
 
@@ -95,6 +96,7 @@ export class BankCard extends PureComponent<IBankCard, IBankCardState> {
     return (
       <Container>
         <SearchField />
+        {status === RequestStatusType.Loading && <Loader />}
         <Map
           {...overview}
           mapStyle={mapStyle}

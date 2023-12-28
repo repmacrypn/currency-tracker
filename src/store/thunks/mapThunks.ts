@@ -2,8 +2,12 @@ import axios, { AxiosError } from 'axios'
 import { Dispatch } from 'redux'
 
 import { mapAPI } from '@/api'
-import { setAppStatus } from '@/store/actions/appActions'
-import { setBanks, setGeoPosition, setMapError } from '@/store/actions/mapActions'
+import {
+  setBanks,
+  setGeoPosition,
+  setMapError,
+  setMapStatus,
+} from '@/store/actions/mapActions'
 import { RequestStatusType } from '@/store/reducers/app/types'
 import { AppThunk } from '@/store/types'
 import { IGeoCity } from '@/types/city'
@@ -12,26 +16,26 @@ export const fetchBanks =
   (geo: IGeoCity): AppThunk =>
   async (dispatch: Dispatch) => {
     try {
-      dispatch(setAppStatus(RequestStatusType.Loading))
+      dispatch(setMapStatus(RequestStatusType.Loading))
 
       const res = await mapAPI.fetchBanks(geo)
 
       dispatch(setBanks(res))
       dispatch(setMapError(null))
-      dispatch(setAppStatus(RequestStatusType.Succeeded))
+      dispatch(setMapStatus(RequestStatusType.Succeeded))
     } catch (e) {
       if (axios.isAxiosError<AxiosError<{ message: string }>>(e)) {
         const err = e.response ? e.response?.data.message : e.message
 
         dispatch(setMapError(err))
       }
-      dispatch(setAppStatus(RequestStatusType.Failed))
+      dispatch(setMapStatus(RequestStatusType.Failed))
     }
   }
 
 export const fetchGeo = () => async (dispatch: Dispatch) => {
   try {
-    dispatch(setAppStatus(RequestStatusType.Loading))
+    dispatch(setMapStatus(RequestStatusType.Loading))
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -52,6 +56,6 @@ export const fetchGeo = () => async (dispatch: Dispatch) => {
       dispatch(setMapError('Your browser does not support geolocation'))
     }
   } finally {
-    dispatch(setAppStatus(RequestStatusType.Succeeded))
+    dispatch(setMapStatus(RequestStatusType.Succeeded))
   }
 }

@@ -1,3 +1,4 @@
+import { RequestStatusType } from '@/store/reducers/app/types'
 import { ActionsMapType, IMapState, MapType } from '@/store/reducers/map/types'
 
 const initialState: IMapState = {
@@ -5,6 +6,7 @@ const initialState: IMapState = {
   mapError: null,
   searchCurrency: '',
   geo: null,
+  mapStatus: RequestStatusType.Idle,
 }
 
 export const mapReducer = (state = initialState, action: ActionsMapType): IMapState => {
@@ -20,6 +22,9 @@ export const mapReducer = (state = initialState, action: ActionsMapType): IMapSt
 
     case MapType.SET_GEO:
       return { ...state, geo: action.payload }
+
+    case MapType.SET_STATUS:
+      return { ...state, mapStatus: action.payload }
 
     default:
       return state

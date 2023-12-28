@@ -9,7 +9,14 @@ export const Container = styled.div`
   gap: ${(props) => props.theme.valueInPx.px20};
   overflow: hidden;
 
+  .mapboxgl-map {
+    @media (max-width: 400px) {
+      width: 93vw !important;
+    }
+  }
+
   @media (max-width: 400px) {
     width: 100%;
+    padding: 0 10px;
   }
 `
