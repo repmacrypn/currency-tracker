@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { ErrorText } from '@/components/ErrorBoundary/ErrorFallback/styled'
+import { ErrorText } from '@/components/ErrorText'
 import {
   IMapDispatchToProps,
   IMapStateToProps,
