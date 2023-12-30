@@ -1,4 +1,5 @@
 import mainLogo from '@/assets/images/mainLogo.svg'
+import { defaultTimeDate } from '@/constants/currencies'
 import { useAppSelector } from '@/hooks/useStoreControl'
 import { Pages } from '@/routes'
 import { selectCurrencyPrices } from '@/store/selectors/homeSelectors'
@@ -19,7 +20,7 @@ export const Main = () => {
   const currencyPrices = useAppSelector(selectCurrencyPrices)
 
   const date = new Date(
-    currencyPrices?.meta.last_updated_at || '2023-12-10T23:59:59Z',
+    currencyPrices?.meta.last_updated_at || defaultTimeDate,
   ).toLocaleTimeString()
 
   return (

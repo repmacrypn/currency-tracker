@@ -1,26 +1,39 @@
 import axios from 'axios'
 
-import { CURRENCIES } from '@/constants/currencies'
+import { defaultCategories, defaultLimit, defaultRadius } from '@/constants/banksData'
+import {
+  CURRENCIES,
+  defaultPeriodId,
+  defaultTimeEnd,
+  defaultTimeStart,
+} from '@/constants/currencies'
 import { IBanksData } from '@/types/bank'
 import { IGeoCity } from '@/types/city'
 import { ICurrencyPrices, ICurrencyValues } from '@/types/currencies'
 import { ICurrencyTimeline } from '@/types/timeline'
 
+const CURRENCIES_URL = process.env.REACT_APP_CURRENCIES_URL
+const CURRENCIES_API_KEY = process.env.REACT_APP_CURRENCIES_API_KEY
+const TIMELINE_URL = process.env.REACT_APP_TIMELINE_URL
+const TIMELINE_API_KEY = process.env.REACT_APP_TIMELINE_API_KEY
+const BANKS_URL = process.env.REACT_APP_BANKS_URL
+const BANKS_API_KEY = process.env.REACT_APP_BANKS_API_KEY
+
 const currenciesInstance = axios.create({
-  baseURL: 'https://api.currencyapi.com/v3/',
+  baseURL: CURRENCIES_URL,
 })
 
 const timeLineInstance = axios.create({
-  baseURL: 'https://rest.coinapi.io/v1/ohlcv/',
+  baseURL: TIMELINE_URL,
   headers: {
-    'X-CoinAPI-Key': '976B0CD1-13FB-4283-9BBD-461CFCC24A73',
+    'X-CoinAPI-Key': TIMELINE_API_KEY,
   },
 })
 
 const banksInstance = axios.create({
-  baseURL: 'https://api.foursquare.com/v3/',
+  baseURL: BANKS_URL,
   headers: {
-    Authorization: 'fsq3tHy+yUY1NZvRjszqWFQU0eQE/lEQbfAPoVHs+6zDatM=',
+    Authorization: BANKS_API_KEY,
   },
 })
 
@@ -28,7 +41,7 @@ export const currencyAPI = {
   async getCurrencyValues() {
     const res = await currenciesInstance.get<ICurrencyValues>('currencies', {
       params: {
-        apikey: 'cur_live_20Btjfbs9InC9eQLl8C7lg91XbUq9KuBGthD8CiX',
+        apikey: CURRENCIES_API_KEY,
         currencies: CURRENCIES,
       },
     })
@@ -39,7 +52,7 @@ export const currencyAPI = {
   async getCurrencyPrices() {
     const res = await currenciesInstance.get<ICurrencyPrices>(`latest`, {
       params: {
-        apikey: 'cur_live_20Btjfbs9InC9eQLl8C7lg91XbUq9KuBGthD8CiX',
+        apikey: CURRENCIES_API_KEY,
         currencies: CURRENCIES,
       },
     })
@@ -50,7 +63,7 @@ export const currencyAPI = {
   async getConversion(currencyFrom: string, currencyTo: string) {
     const res = await currenciesInstance.get<ICurrencyPrices>('latest', {
       params: {
-        apikey: 'cur_live_20Btjfbs9InC9eQLl8C7lg91XbUq9KuBGthD8CiX',
+        apikey: CURRENCIES_API_KEY,
         base_currency: currencyFrom,
         currencies: currencyTo,
       },
@@ -64,9 +77,9 @@ export const currencyAPI = {
       `BITSTAMP_SPOT_${code}_USD/history`,
       {
         params: {
-          period_id: '1DAY',
-          time_start: `${day}T00:00:00`,
-          time_end: `${day}T23:59:59`,
+          period_id: defaultPeriodId,
+          time_start: `${day}${defaultTimeStart}`,
+          time_end: `${day}${defaultTimeEnd}`,
         },
       },
     )
@@ -79,8 +92,8 @@ export const currencyAPI = {
       `BITSTAMP_SPOT_${code}_USD/history`,
       {
         params: {
-          period_id: '1DAY',
-          time_start: `${month}T00:00:00`,
+          period_id: defaultPeriodId,
+          time_start: `${month}${defaultTimeStart}`,
         },
       },
     )
@@ -96,9 +109,9 @@ export const mapAPI = {
     const res = await banksInstance.get<IBanksData>('places/search', {
       params: {
         ll: `${latitude},${longitude}`,
-        radius: 60000,
-        categories: '11045',
-        limit: 50,
+        radius: defaultRadius,
+        categories: defaultCategories,
+        limit: defaultLimit,
       },
     })
 

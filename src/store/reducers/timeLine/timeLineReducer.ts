@@ -1,3 +1,4 @@
+import { defaultTimelineCurrency } from '@/constants/currencies'
 import { RequestStatusType } from '@/store/reducers/app/types'
 import {
   ActionsTimelineType,
@@ -7,7 +8,7 @@ import {
 import { periodEnum } from '@/types/timeline'
 
 const initialState: ITimeLineState = {
-  currencyTimeline: 'EUR',
+  currencyTimeline: defaultTimelineCurrency,
   period: periodEnum.Month,
   day: null,
   chartData: null,

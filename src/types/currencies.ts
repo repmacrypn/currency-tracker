@@ -29,3 +29,10 @@ export interface ICurrencyStocks {
   value: string
   img: string
 }
+
+export enum CurrencyDataItem {
+  Name = 'name',
+  Symbol = 'symbol',
+  Code = 'code',
+  Symbol_native = 'symbol_native',
+}

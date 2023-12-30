@@ -1,4 +1,5 @@
 import { Converter } from '@/components/Converter'
+import { defaultTimelineCurrency } from '@/constants/currencies'
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl'
 import { setModal } from '@/store/actions/appActions'
 import { setCurrencyFrom, setCurrencyTo } from '@/store/actions/homeActions'
@@ -14,7 +15,8 @@ export const Modal = () => {
   const currencyValues = useAppSelector(selectCurrencyValues)
   const isModalOpen = useAppSelector(selectIsModalOpen)
 
-  const currentCurrency = currencyValues?.data[selectedCurrency || 'USD']
+  const currentCurrency =
+    currencyValues?.data[selectedCurrency || defaultTimelineCurrency]
 
   const handleModalClose = () => {
     dispatch(setModal(false))

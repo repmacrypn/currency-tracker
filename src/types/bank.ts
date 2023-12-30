@@ -47,3 +47,17 @@ interface IBankCategories {
     suffix: string
   }
 }
+
+export enum Bank {
+  Belinvest = 'белинвест',
+  Absolut = 'абсолют',
+  Tehno = 'техно',
+  Bnb = 'бнб',
+  Veb = 'вэб',
+  Bsb = 'bsb',
+  Prior = 'приор',
+  Alfa = 'альфа',
+  Mtb = 'мтб',
+  Dabrabyt = 'дабрабыт',
+  Sber = 'сбер',
+}

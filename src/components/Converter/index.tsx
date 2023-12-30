@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 
 import { Select } from '@/components/Converter/Select'
 import { IconDiv } from '@/components/CurrenciesBlock/CurrencyCard/styled'
@@ -16,6 +16,7 @@ import {
 } from '@/store/selectors/homeSelectors'
 import { fetchConversion } from '@/store/thunks/homeThunks'
 import { filterCurrency } from '@/utils/helpers/filterCurrencies'
+import { filterCurrencyData } from '@/utils/helpers/filterCurrencyData'
 import { getCurrencyCode } from '@/utils/helpers/getCurrencyCode'
 
 import { IConverter } from './interface'
@@ -34,6 +35,11 @@ export const Converter = ({ currentCurrency }: IConverter) => {
   const codeCurrencyTo = getCurrencyCode(currencyTo)
   const codeCurrencyFrom = getCurrencyCode(currencyFrom)
 
+  const currancyData = useMemo(
+    () => filterCurrencyData(currentCurrency),
+    [currentCurrency],
+  )
+
   const { name, code } = currentCurrency
   const isLoading = status === RequestStatusType.Loading
 
@@ -50,19 +56,11 @@ export const Converter = ({ currentCurrency }: IConverter) => {
   return (
     <Container>
       <IconDiv className={code}>{code}</IconDiv>
-      {Object.entries(currentCurrency)
-        .filter(
-          ([key]) =>
-            key === 'name' ||
-            key === 'symbol' ||
-            key === 'code' ||
-            key === 'symbol_native',
-        )
-        .map(([key, value]) => (
-          <Item key={key}>
-            <b>{key}:</b> {value}
-          </Item>
-        ))}
+      {currancyData.map(([key, value]) => (
+        <Item key={key}>
+          <b>{key}:</b> {value}
+        </Item>
+      ))}
       <Hint>You can find out the exchange rate of the {name} currancy</Hint>
       <Select onClick={handleSelectChange} placeholder='Exchange currancy...'>
         {currencyOptions.map((cur) => (

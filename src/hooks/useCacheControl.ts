@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 
+import { defaultTimePeriod } from '@/constants/common'
 import { useAppDispatch } from '@/hooks/useStoreControl'
 import { getCurrencyPrices, getCurrencyValues } from '@/store/actions/homeActions'
 import { fetchCurrencies } from '@/store/thunks/homeThunks'
@@ -17,7 +18,7 @@ export const useCacheControl = () => {
       const cachedTime = new Date(JSON.parse(cachedCurrencyTimestamp)).getTime()
       const timeLeft = currentTime - cachedTime
 
-      if (timeLeft < 60 * 60 * 24 * 1000) {
+      if (timeLeft < defaultTimePeriod) {
         dispatch(getCurrencyValues(JSON.parse(cachedCurrencyValues)))
         dispatch(getCurrencyPrices(JSON.parse(cachedCurrencyPrices)))
       } else dispatch(fetchCurrencies())
