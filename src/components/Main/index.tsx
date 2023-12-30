@@ -1,28 +1,17 @@
 import mainLogo from '@/assets/images/mainLogo.svg'
-import { defaultTimeDate } from '@/constants/currencies'
-import { useAppSelector } from '@/hooks/useStoreControl'
+import { DateBlock } from '@/components/Main/DateBlock'
 import { Pages } from '@/routes'
-import { selectCurrencyPrices } from '@/store/selectors/homeSelectors'
 
 import {
   Container,
-  DateBlock,
-  DateText,
   Logo,
   LogoBlock,
   LogoDescription,
   LogoInfo,
   LogoTitle,
-  Pulse,
 } from './styled'
 
 export const Main = () => {
-  const currencyPrices = useAppSelector(selectCurrencyPrices)
-
-  const date = new Date(
-    currencyPrices?.meta.last_updated_at || defaultTimeDate,
-  ).toLocaleTimeString()
-
   return (
     <Container>
       <LogoBlock>
@@ -33,10 +22,7 @@ export const Main = () => {
         </LogoDescription>
         <Logo alt='main logo' src={mainLogo} />
       </LogoBlock>
-      <DateBlock>
-        <Pulse />
-        <DateText>Last updated at {date}</DateText>
-      </DateBlock>
+      <DateBlock />
       <Pages />
     </Container>
   )

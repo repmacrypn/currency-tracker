@@ -1,5 +1,3 @@
-import { useMemo } from 'react'
-
 import { CurrenciesBlock } from '@/components/CurrenciesBlock'
 import { CurrencyCard } from '@/components/CurrenciesBlock/CurrencyCard'
 import { ErrorText } from '@/components/ErrorText'
@@ -9,11 +7,7 @@ import { CURRENCIES, currencyStocks } from '@/constants/currencies'
 import { useCacheControl } from '@/hooks/useCacheControl'
 import { useAppSelector } from '@/hooks/useStoreControl'
 import { RequestStatusType } from '@/store/reducers/app/types'
-import {
-  selectAppError,
-  selectAppStatus,
-  selectIsModalOpen,
-} from '@/store/selectors/appSelectors'
+import { selectAppError, selectAppStatus } from '@/store/selectors/appSelectors'
 import {
   selectCurrencyPrices,
   selectCurrencyValues,
@@ -24,11 +18,10 @@ import { Container } from './styled'
 export const Home = () => {
   const currencyValues = useAppSelector(selectCurrencyValues)
   const currencyPrices = useAppSelector(selectCurrencyPrices)
-  const isModalOpen = useAppSelector(selectIsModalOpen)
   const status = useAppSelector(selectAppStatus)
   const error = useAppSelector(selectAppError)
 
-  const currencies = useMemo(() => CURRENCIES.split(','), [])
+  const currencies = CURRENCIES.split(',')
 
   useCacheControl()
 
@@ -57,7 +50,7 @@ export const Home = () => {
           )
         })}
       </CurrenciesBlock>
-      {isModalOpen && <Modal />}
+      <Modal />
     </Container>
   )
 }

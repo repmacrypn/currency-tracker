@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 
 import { useDebounce } from '@/hooks/useDebounce'
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl'
@@ -22,14 +22,11 @@ export const useSearchControl = () => {
     else setIsHintBlockOpen(false)
   }
 
-  const handleHintItemClick = useCallback(
-    (code: string) => {
-      dispatch(setSearchCurrency(code))
-      setIsHintBlockOpen(false)
-      setSearchValue(code)
-    },
-    [dispatch],
-  )
+  const handleHintItemClick = (code: string) => {
+    dispatch(setSearchCurrency(code))
+    setIsHintBlockOpen(false)
+    setSearchValue(code)
+  }
 
   const onInputFocus = () => {
     if (searchValue.length > 0) setIsHintBlockOpen(true)

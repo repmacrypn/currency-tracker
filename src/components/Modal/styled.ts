@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div<{ $isActive: boolean }>`
-  display: flex;
+  display: ${({ $isActive }) => ($isActive ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
   position: fixed;

@@ -24,6 +24,8 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
 
   monthName = getMonthName()
 
+  dateControl = handleDateControl()
+
   componentDidMount() {
     this.fetchCurrency()
   }
@@ -103,7 +105,7 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
             <>
               <Hint>Select most wanted day to declare a 24 hour Chart range </Hint>
               <Select onClick={this.handleSelectDayChange} value='1'>
-                {handleDateControl().pastDaysArr.map((cur) => (
+                {this.dateControl.pastDaysArr.map((cur) => (
                   <option value={cur} key={cur}>
                     {cur} {this.monthName}
                   </option>
