@@ -27,7 +27,7 @@ export const BarChart = memo(({ dataChart, code }: IBarChart) => {
 
   const theme = useTheme()
 
-  const data = getConfigChart(dataChart, code, theme)
+  const { data, options, plugins } = getConfigChart(dataChart, code, theme)
 
   useEffect(() => {
     const subject = new Subject(dataChart)
@@ -44,7 +44,7 @@ export const BarChart = memo(({ dataChart, code }: IBarChart) => {
 
   return (
     <Container>
-      <Bar data={data.data} options={data.options} plugins={data.plugins} />
+      <Bar data={data} options={options} plugins={plugins} />
     </Container>
   )
 })

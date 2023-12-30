@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 import { useAppDispatch } from '@/hooks/useStoreControl'
 import { setModal } from '@/store/actions/appActions'
 import { setCurrencyFrom } from '@/store/actions/homeActions'
@@ -5,7 +7,7 @@ import { setCurrencyFrom } from '@/store/actions/homeActions'
 import { ICurrencyCard } from './interface'
 import { Card, Container, IconDiv, IconImg, Price, Title, Wrapper } from './styled'
 
-export const CurrencyCard = ({ src, symbol, name, price, code }: ICurrencyCard) => {
+export const CurrencyCard = memo(({ src, symbol, name, price, code }: ICurrencyCard) => {
   const dispatch = useAppDispatch()
 
   const onCurrencyCardClick = (currencyCode: string | null) => () => {
@@ -30,4 +32,4 @@ export const CurrencyCard = ({ src, symbol, name, price, code }: ICurrencyCard) 
       </Container>
     </Card>
   )
-}
+})

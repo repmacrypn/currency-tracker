@@ -6,6 +6,7 @@ import { Loader } from '@/components/Loader'
 import { MarkerControl } from '@/components/MarkerControl'
 import { SearchField } from '@/components/SearchField'
 import { defaultLatitude, defaultLongitude, defaultZoom } from '@/constants/banksData'
+import { defaultMapStyle } from '@/constants/common'
 import { ThemeContext } from '@/context/ThemeContext'
 import { RequestStatusType } from '@/store/reducers/app/types'
 import { mapDark, mapLight } from '@/theme'
@@ -14,6 +15,8 @@ import { IBank } from '@/types/bank'
 import { getCurrentBanks } from '@/utils/helpers/getCurrentBanks'
 
 import { Container } from './styled'
+
+const ACCESS_TOKEN = process.env.REACT_APP_MAP_ACCESS_TOKEN
 
 export class BankCard extends PureComponent<IBankCard, IBankCardState> {
   static contextType = ThemeContext
@@ -100,10 +103,10 @@ export class BankCard extends PureComponent<IBankCard, IBankCardState> {
         <Map
           {...overview}
           mapStyle={mapStyle}
-          mapboxAccessToken='pk.eyJ1IjoiZGVuYmFyYWJyYXphIiwiYSI6ImNsamc0eXRiaTA2dXQzZm9lNWdkYzFrbXYifQ.JSPXP8VcLBbyHL9d6M13ig'
+          mapboxAccessToken={ACCESS_TOKEN}
           attributionControl={false}
           onMove={(evt: ViewStateChangeEvent) => this.onOverviewChange(evt.viewState)}
-          style={{ height: '60vh', width: '100vw' }}
+          style={defaultMapStyle}
         >
           <MarkerControl
             currentBanks={currentBanks}

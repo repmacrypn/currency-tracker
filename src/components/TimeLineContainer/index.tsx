@@ -7,6 +7,7 @@ import {
   IMapStateToProps,
   ITimeLineContainer,
 } from '@/components/TimeLineContainer/interfaces'
+import { defaultTimelineCurrency } from '@/constants/currencies'
 import { TimeLine } from '@/pages/TimeLine'
 import {
   setChartData,
@@ -23,7 +24,7 @@ class TimeLineContainer extends React.Component<ITimeLineContainer> {
 
     if (error) {
       setTimelineError(null)
-      setTimelineCurrency('EUR')
+      setTimelineCurrency(defaultTimelineCurrency)
     }
   }
 

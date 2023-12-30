@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { memo, useRef } from 'react'
 
 import { HintBlock } from '@/components/SearchField/HintBlock'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
@@ -6,7 +6,7 @@ import { useSearchControl } from '@/hooks/useSearchControl'
 
 import { Container, InputItem } from './styled'
 
-export const SearchField = () => {
+export const SearchField = memo(() => {
   const hintBlockNode = useRef<HTMLDivElement>(null)
 
   const {
@@ -34,4 +34,4 @@ export const SearchField = () => {
       )}
     </Container>
   )
-}
+})
