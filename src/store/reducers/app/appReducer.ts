@@ -5,7 +5,7 @@ import {
   RequestStatusType,
 } from '@/store/reducers/app/types'
 
-const initialState: IAppState = {
+export const initialState: IAppState = {
   appStatus: RequestStatusType.Idle,
   appError: null,
   isModalOpen: false,

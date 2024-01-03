@@ -7,7 +7,7 @@ import {
 } from '@/store/reducers/timeLine/types'
 import { periodEnum } from '@/types/timeline'
 
-const initialState: ITimeLineState = {
+export const initialState: ITimeLineState = {
   currencyTimeline: defaultTimelineCurrency,
   period: periodEnum.Month,
   day: null,

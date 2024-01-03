@@ -1,7 +1,7 @@
 import { RequestStatusType } from '@/store/reducers/app/types'
 import { ActionsHomeType, HomeType, IHomeState } from '@/store/reducers/home/types'
 
-const initialState: IHomeState = {
+export const initialState: IHomeState = {
   currencyValues: null,
   currencyPrices: null,
   currencyError: null,

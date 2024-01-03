@@ -1,7 +1,7 @@
 import { RequestStatusType } from '@/store/reducers/app/types'
 import { ActionsMapType, IMapState, MapType } from '@/store/reducers/map/types'
 
-const initialState: IMapState = {
+export const initialState: IMapState = {
   banks: null,
   mapError: null,
   searchCurrency: '',
