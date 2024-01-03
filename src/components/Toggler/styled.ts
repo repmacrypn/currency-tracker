@@ -5,7 +5,7 @@ export const Container = styled.div`
   position: relative;
   width: 50px;
   height: 28px;
-  z-index: 5;
+  z-index: 1;
   background-color: ${(props) => props.theme.colors.togglerBackColor};
   border: 2px solid;
   border-color: ${(props) => props.theme.colors.togglerBorderColor};
