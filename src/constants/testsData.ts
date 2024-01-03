@@ -43,6 +43,16 @@ export const defaultCurrencyValues: ICurrencyValues = {
   },
 }
 
+export const defaultCurrencyData = {
+  symbol: 'AR$',
+  name: 'Argentine Peso',
+  symbol_native: '$',
+  decimal_digits: 2,
+  rounding: 0,
+  code: 'ARS',
+  name_plural: 'Argentine pesos',
+}
+
 export const defaultBanks: IBanksData = {
   results: [
     {
@@ -93,3 +103,153 @@ export const defaultCurrencyTimelineData: ICurrencyTimeline[] = [
     volume_traded: 456.78,
   },
 ]
+
+export const allBanks: IBanksData = {
+  results: [
+    {
+      fsq_id: '4fabcbe8e4b07dbb597c554b',
+      categories: [
+        {
+          id: 11045,
+          name: 'Bank',
+          icon: {
+            prefix: 'https://ss3.4sqi.net/img/categories_v2/shops/financial_',
+            suffix: '.png',
+          },
+        },
+      ],
+      chains: [],
+      distance: 4009,
+      geocodes: {
+        main: {
+          latitude: 53.924063,
+          longitude: 27.612311,
+        },
+      },
+      link: '/v3/places/4fabcbe8e4b07dbb597c554b',
+      location: {
+        address: 'пр-т Независимости, 93',
+        country: 'BY',
+        formatted_address: 'пр-т Независимости, 93, Мінск',
+        locality: 'Minsk',
+        region: 'Minsk',
+      },
+      name: 'Альфа-Банк',
+      related_places: {},
+      timezone: 'Europe/Minsk',
+    },
+    {
+      fsq_id: '55fbc49e498e3e59b507d245',
+      categories: [
+        {
+          id: 11045,
+          name: 'Bank',
+          icon: {
+            prefix: 'https://ss3.4sqi.net/img/categories_v2/shops/financial_',
+            suffix: '.png',
+          },
+        },
+      ],
+      chains: [],
+      distance: 3758,
+      geocodes: {
+        main: {
+          latitude: 53.885478,
+          longitude: 27.514835,
+        },
+      },
+      link: '/v3/places/55fbc49e498e3e59b507d245',
+      location: {
+        address: 'Ул. Щорса, 11',
+        country: 'BY',
+        cross_street: '',
+        formatted_address: 'Ул. Щорса, 11, Мінск',
+        locality: 'Minsk',
+        region: 'Minsk',
+      },
+      name: 'Абсолютбанк',
+      related_places: {},
+      timezone: 'Europe/Minsk',
+    },
+    {
+      fsq_id: '4fd70b1ce4b03d9254274aaa',
+      categories: [
+        {
+          id: 11045,
+          name: 'Bank',
+          icon: {
+            prefix: 'https://ss3.4sqi.net/img/categories_v2/shops/financial_',
+            suffix: '.png',
+          },
+        },
+      ],
+      chains: [],
+      distance: 4003,
+      geocodes: {
+        main: {
+          latitude: 53.908301,
+          longitude: 27.62617,
+        },
+      },
+      link: '/v3/places/4fd70b1ce4b03d9254274aaa',
+      location: {
+        address: '2-й пер. Багратиона, 20',
+        country: 'BY',
+        cross_street: '',
+        formatted_address: '2-й пер. Багратиона, 20, Мінск, 220037',
+        locality: 'Minsk',
+        postcode: '220037',
+        region: 'Minsk',
+      },
+      name: 'Беларусбанк 511/212',
+      related_places: {},
+      timezone: 'Europe/Minsk',
+    },
+    {
+      fsq_id: '4cda97d6930af04deca98597',
+      categories: [
+        {
+          id: 11045,
+          name: 'Bank',
+          icon: {
+            prefix: 'https://ss3.4sqi.net/img/categories_v2/shops/financial_',
+            suffix: '.png',
+          },
+        },
+      ],
+      chains: [],
+      distance: 2092,
+      geocodes: {
+        main: {
+          latitude: 53.910743,
+          longitude: 27.540416,
+        },
+      },
+      link: '/v3/places/4cda97d6930af04deca98597',
+      location: {
+        address: 'просп. Победителей, 23 корп. 3',
+        country: 'BY',
+        cross_street: 'ул. Заславская',
+        formatted_address:
+          'просп. Победителей, 23 корп. 3 (ул. Заславская), Мінск, 220004',
+        locality: 'Minsk',
+        postcode: '220004',
+        region: 'Minsk',
+      },
+      name: 'BSB Bank',
+      related_places: {},
+      timezone: 'Europe/Minsk',
+    },
+  ],
+  context: {
+    geo_bounds: {
+      circle: {
+        center: {
+          latitude: 53.9,
+          longitude: 27.56667,
+        },
+        radius: 7128,
+      },
+    },
+  },
+}
