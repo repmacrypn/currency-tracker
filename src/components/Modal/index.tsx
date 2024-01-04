@@ -25,7 +25,7 @@ export const Modal = () => {
   }
 
   return (
-    <Container $isActive={isModalOpen} onClick={handleModalClose}>
+    <Container data-testid='modal' $isActive={isModalOpen} onClick={handleModalClose}>
       <Content $isActive={isModalOpen} onClick={(e) => e.stopPropagation()}>
         {currentCurrency ? <Converter currentCurrency={currentCurrency} /> : null}
       </Content>

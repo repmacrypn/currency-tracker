@@ -85,7 +85,9 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
 
     return (
       <Container>
-        <IconDiv className={currencyTimeline || undefined}>{currencyTimeline}</IconDiv>
+        <IconDiv className={currencyTimeline || undefined} data-testid='currencyIcon'>
+          {currencyTimeline}
+        </IconDiv>
         <SelectBlock>
           <Hint>
             Select the currency which you want to display on the Chart (BTC and EUR are
@@ -93,7 +95,7 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
           </Hint>
           <Select onClick={this.handleSelectChange} value={currencyTimeline || undefined}>
             {this.currencyOptions.map((cur) => (
-              <option value={cur} key={cur}>
+              <option value={cur} key={cur} data-testid='currencyOption'>
                 {cur}
               </option>
             ))}

@@ -35,7 +35,7 @@ export const Home = () => {
           <CurrencyCard key={name} src={img} name={name} price={value} />
         ))}
       </CurrenciesBlock>
-      <CurrenciesBlock title='Quotes'>
+      <CurrenciesBlock data-testid='currenciesBlock' title='Quotes'>
         {currencies.map((currency, index) => {
           const currentCurrency = currencyValues?.data[currency]
 

@@ -253,3 +253,23 @@ export const allBanks: IBanksData = {
     },
   },
 }
+
+export const defaultChartData = [
+  {
+    price_close: 30592,
+    price_high: 30647,
+    price_low: 30321,
+    price_open: 30469,
+    time_close: '2023-07-01T23:58:46.1090000Z',
+    time_open: '2023-07-01T00:00:12.7540000Z',
+    time_period_end: '2023-07-02T00:00:00.0000000Z',
+    time_period_start: '2023-07-01T00:00:00.0000000Z',
+    trades_count: 8788,
+    volume_traded: 603.9032895,
+  },
+]
+
+export const defaultGeo = {
+  latitude: 52.0975,
+  longitude: 23.6877,
+}

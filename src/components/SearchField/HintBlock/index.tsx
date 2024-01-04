@@ -14,7 +14,7 @@ export const HintBlock = memo(({ searchValue, onClick }: IHintBlock) => {
   }
 
   return (
-    <Container>
+    <Container data-testid='hintsList'>
       {hintsData.length > 0 ? (
         hintsData?.map((code) => {
           return (
@@ -24,7 +24,7 @@ export const HintBlock = memo(({ searchValue, onClick }: IHintBlock) => {
           )
         })
       ) : (
-        <EmptyState>No currencies were found...</EmptyState>
+        <EmptyState data-testid='hintsEmptyState'>No currencies were found...</EmptyState>
       )}
     </Container>
   )

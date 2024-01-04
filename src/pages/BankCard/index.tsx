@@ -97,7 +97,7 @@ export class BankCard extends PureComponent<IBankCard, IBankCardState> {
     const mapStyle = theme === ThemeEnum.dark ? mapLight : mapDark
 
     return (
-      <Container>
+      <Container data-testid='map'>
         <SearchField />
         {status === RequestStatusType.Loading && <Loader />}
         <Map

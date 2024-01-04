@@ -17,8 +17,8 @@ export const Toggler = () => {
   }, [theme, setTheme])
 
   return (
-    <Container onClick={handleToggleChange}>
-      <ToggleItem $isActive={theme === 'darkTheme'} />
+    <Container data-testid='togglerWrapper' onClick={handleToggleChange}>
+      <ToggleItem data-testid='toggler' $isActive={theme === 'darkTheme'} />
     </Container>
   )
 }

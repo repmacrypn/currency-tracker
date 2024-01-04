@@ -43,7 +43,7 @@ export const BarChart = memo(({ dataChart, code }: IBarChart) => {
   }, [period, dataChart])
 
   return (
-    <Container>
+    <Container data-testid='chart'>
       <Bar data={data} options={options} plugins={plugins} />
     </Container>
   )
