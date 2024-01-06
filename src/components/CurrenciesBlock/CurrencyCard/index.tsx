@@ -19,7 +19,7 @@ export const CurrencyCard = memo(({ src, symbol, name, price, code }: ICurrencyC
 
   return (
     <Card>
-      <Container onClick={onCurrencyCardClick(code || null)}>
+      <Container data-cy='currencyCard' onClick={onCurrencyCardClick(code || null)}>
         {src ? (
           <IconImg src={src} alt='icon' />
         ) : (

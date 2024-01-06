@@ -29,7 +29,7 @@ export const PeriodToggle: FC<IPeriodToggle> = memo(({ period }) => {
   return (
     <TogglerContainer>
       {period === periodEnum.Month ? 'Month' : 'Day'}
-      <Container onClick={handleToggleChange} data-testid='toggler'>
+      <Container onClick={handleToggleChange} data-cy='periodToggler'>
         <ToggleItem $isActive={period !== periodEnum.Day} />
       </Container>
     </TogglerContainer>

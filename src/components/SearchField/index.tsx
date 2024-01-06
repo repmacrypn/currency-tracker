@@ -24,6 +24,7 @@ export const SearchField = memo(() => {
   return (
     <Container ref={hintBlockNode}>
       <InputItem
+        data-cy='searchInput'
         data-testid='searchInput'
         onFocus={onInputFocus}
         value={searchValue}

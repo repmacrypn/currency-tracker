@@ -57,7 +57,7 @@ export const ExchangeBlock = ({ currentCurrency }: IConverter) => {
       {isLoading && <Loader />}
       {error && <ErrorText>{error}</ErrorText>}
       {currencyTo && !isLoading && !error && (
-        <ConverterValue>
+        <ConverterValue data-cy='convertValue'>
           1 {currentCurrency.code} = {convertValue} {codeCurrencyTo}
         </ConverterValue>
       )}

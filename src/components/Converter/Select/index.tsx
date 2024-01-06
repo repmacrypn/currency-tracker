@@ -12,7 +12,7 @@ export const Select = ({ placeholder, value, children, onClick }: ISelect) => {
   }
 
   return (
-    <Container value={selectValue} onChange={handleSelectChange}>
+    <Container data-cy='select' value={selectValue} onChange={handleSelectChange}>
       {placeholder && (
         <option value='' disabled hidden>
           {placeholder}

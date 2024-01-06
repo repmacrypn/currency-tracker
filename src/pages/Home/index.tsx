@@ -29,8 +29,8 @@ export const Home = () => {
   if (error) return <ErrorText>{error}</ErrorText>
 
   return (
-    <Container>
-      <CurrenciesBlock title='Stocks'>
+    <Container data-cy='homePage'>
+      <CurrenciesBlock data-testid='currenciesBlock' title='Stocks'>
         {currencyStocks.map(({ img, name, value }) => (
           <CurrencyCard key={name} src={img} name={name} price={value} />
         ))}

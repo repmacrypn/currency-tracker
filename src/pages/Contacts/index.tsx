@@ -13,7 +13,7 @@ import {
 
 export const Contacts = () => {
   return (
-    <Container>
+    <Container data-cy='contactsPage'>
       <Title>Contact us:</Title>
       <Wrapper>
         <DataBlock>

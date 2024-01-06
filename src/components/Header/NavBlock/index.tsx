@@ -7,7 +7,12 @@ export const NavBlock = ({ handleNavItemClick = () => {} }: INavBlock) => {
   return (
     <Container>
       {links.map((link) => (
-        <NavLinkElem onClick={handleNavItemClick} key={link.to} to={link.to}>
+        <NavLinkElem
+          data-cy={link.to}
+          onClick={handleNavItemClick}
+          key={link.to}
+          to={link.to}
+        >
           {link.label}
         </NavLinkElem>
       ))}

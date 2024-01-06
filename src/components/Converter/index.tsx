@@ -9,7 +9,7 @@ export const Converter = ({ currentCurrency }: IConverter) => {
   const currancyData = filterCurrencyData(currentCurrency)
 
   return (
-    <Container>
+    <Container data-cy='converter'>
       <IconDiv className={currentCurrency.code}>{currentCurrency.code}</IconDiv>
       {currancyData.map(([key, value]) => (
         <Item key={key}>

@@ -14,7 +14,7 @@ import {
 export const Main = () => {
   return (
     <Container>
-      <LogoBlock>
+      <LogoBlock data-cy='logoBlock'>
         <LogoDescription>
           <LogoTitle>Modsen Currency</LogoTitle>
           <LogoTitle $isHuge>Tracker</LogoTitle>

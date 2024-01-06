@@ -84,11 +84,11 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
     const { chartData, period, currencyTimeline, status } = this.props
 
     return (
-      <Container>
+      <Container data-cy='timelinePage'>
         <IconDiv className={currencyTimeline || undefined} data-testid='currencyIcon'>
           {currencyTimeline}
         </IconDiv>
-        <SelectBlock>
+        <SelectBlock data-cy='selectCurrencyBlock'>
           <Hint>
             Select the currency which you want to display on the Chart (BTC and EUR are
             valid)
@@ -101,7 +101,7 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
             ))}
           </Select>
         </SelectBlock>
-        <SelectBlock>
+        <SelectBlock data-cy='selectDayBlock'>
           <PeriodToggle period={period} />
           {period === periodEnum.Day && (
             <>
