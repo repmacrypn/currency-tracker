@@ -22,8 +22,8 @@ export const Content = styled.div<{ $isActive: boolean }>`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 50%;
-  height: 65%;
+  width: 50vw;
+  height: auto;
   padding: ${(props) => props.theme.valueInPx.px20};
   border-radius: ${(props) => props.theme.valueInPx.px8};
   color: ${(props) => props.theme.colors.fontColor};
@@ -31,11 +31,8 @@ export const Content = styled.div<{ $isActive: boolean }>`
   transform: ${({ $isActive }) => ($isActive ? 'scale(1)' : 'scale(0.5)')};
   transition: ${(props) => props.theme.defaultTransition};
 
-  @media (max-width: 992px) {
-    width: 80%;
-  }
-
-  @media (max-width: 420px) {
-    width: 90%;
+  @media (max-width: 574px) {
+    width: 80vw;
+    max-height: 90vh;
   }
 `
